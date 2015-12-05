@@ -1,41 +1,41 @@
 /********************************************
-³ÌĞòÃû³Æ£ºext_interrupt_test
-¹¦ÄÜ£ºpcDuinoÍ¨¹ıÍâ²¿ÖĞ¶Ï·½Ê½¼ì²â°´¼ü·¶Àı´úÂë
-°æ±¾£ºv1.0
-×÷Õß£ºÀÁÍÃ×Ó <haixiaoli2@163.com>
+ç¨‹åºåç§°ï¼šext_interrupt_test
+åŠŸèƒ½ï¼špcDuinoé€šè¿‡å¤–éƒ¨ä¸­æ–­æ–¹å¼æ£€æµ‹æŒ‰é”®èŒƒä¾‹ä»£ç 
+ç‰ˆæœ¬ï¼šv1.0
+ä½œè€…ï¼šæ‡’å…”å­ <haixiaoli2@163.com>
 *********************************************/
-//°üº¬Í·ÎÄ¼ş
+//åŒ…å«å¤´æ–‡ä»¶
 #include <core.h>
 
-//ºê¶¨Òå¼°È«¾Ö±äÁ¿
-#define INT_MODE    RISING//ÖĞ¶ÏÄ£Ê½£¬ÉÏÉıÑØÖĞ¶Ï
-int cntButton1 = 0, cntButton2 = 0;
+//å®å®šä¹‰åŠå…¨å±€å˜é‡
+#define INT_MODE    RISING//ä¸­æ–­æ¨¡å¼ï¼Œä¸Šå‡æ²¿ä¸­æ–­
+int cntButton1 = 0, cntButton2 = 1;
 
-//¹¦ÄÜº¯Êı²¿·Ö
-//°´¼ü1ÖĞ¶ÏÖ´ĞĞº¯Êı
+//åŠŸèƒ½å‡½æ•°éƒ¨åˆ†
+//æŒ‰é”®1ä¸­æ–­æ‰§è¡Œå‡½æ•°
 void button1Pressed()
 {
   cntButton1++; 
   printf("Button1 pressed %d time(s).\n", cntButton1);  
 }
 
-//°´¼ü2ÖĞ¶ÏÖ´ĞĞº¯Êı
+//æŒ‰é”®2ä¸­æ–­æ‰§è¡Œå‡½æ•°
 void button2Pressed()
 {
   cntButton2++;
   printf("Button2 pressed %d time(s).\n", cntButton2); 
 }
 
-//³õÊ¼»¯ÉèÖÃ²¿·Ö
+//åˆå§‹åŒ–è®¾ç½®éƒ¨åˆ†
 void setup()
 {
-  //½«GPIO2(INT0)ºÍGPIO3(INT1)ÉèÎªÖĞ¶ÏÊäÈëÒı½Å£¬ÖĞ¶ÏÖ´ĞĞº¯Êı·Ö±ğÎªbutton1PressedºÍbutton2Pressed
+  //å°†GPIO2(INT0)å’ŒGPIO3(INT1)è®¾ä¸ºä¸­æ–­è¾“å…¥å¼•è„šï¼Œä¸­æ–­æ‰§è¡Œå‡½æ•°åˆ†åˆ«ä¸ºbutton1Pressedå’Œbutton2Pressed
   printf("Attaching interrupt pins.\n");
   attachInterrupt(0, button1Pressed, INT_MODE);
   attachInterrupt(1, button2Pressed, INT_MODE);
 }
 
-//Ñ­»·Ö´ĞĞ²¿·Ö
+//å¾ªç¯æ‰§è¡Œéƒ¨åˆ†
 void loop()
 {
 }
